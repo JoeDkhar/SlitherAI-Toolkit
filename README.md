@@ -222,5 +222,5 @@ Keep `.env` files private, use test networks only, inspect contracts before main
 * Recompile contracts if deployment errors occur.
 
 ---
-* refine the README for **publication or thesis appendix**,
-* or reformat it into **GitHub-optimized Markdown with badges and sections**.
+
+
