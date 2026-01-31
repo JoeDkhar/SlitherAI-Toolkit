@@ -1,6 +1,22 @@
+# --- Research & Private Docs (CRITICAL: DO NOT DELETE) ---
+research paper/
+RESPONSE_TO_REVIEWERS.md
+RESPONSE_TO_REVIEWERS.docx
+Paper_84_*.pdf
+Paper_84_*.docx
+DIRECTORY_STRUCTURE
+*.log
+
+# --- Branding & Internal Toolkit Files ---
+SlitherAI Toolkit.png
+SlitherAI Toolkit.svg
+SlitherAI Toolkit.txt
+DIRECTORY_STRUCTURE.md
+
+# --- Secrets ---
 .env
 
-# Dependencies and lock files
+# --- Dependencies and lock files ---
 node_modules/
 package-lock.json
 yarn.lock
@@ -8,22 +24,29 @@ pnpm-lock.yaml
 npm-debug.log*
 yarn-error.log*
 
-# Build outputs
+# --- Build outputs ---
 dist/
 build/
 out/
 
-# IDE
+# --- IDE ---
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS
+# --- OS ---
 .DS_Store
 Thumbs.db
 
-# Hardhat
+# --- Hardhat ---
 cache/
 artifacts/
+sample-hardhat/artifacts/
+sample-hardhat/cache/
+sample-hardhat/coverage/
+sample-hardhat/typechain-types/
+
+# --- GitHub Configuration ---
+.github/

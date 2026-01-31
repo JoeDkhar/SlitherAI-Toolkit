@@ -97,6 +97,27 @@ export function activate(context: vscode.ExtensionContext) {
         })
     );
 
+    // 4. Network Safety Check - Prevent accidental Mainnet deployments
+    context.subscriptions.push(
+        vscode.commands.registerCommand('web3-copilot-proto.checkNetworkSafety', async (chainId?: number, network?: string) => {
+            // Safety check for Mainnet (chainId 1)
+            if (chainId === 1 || network?.toLowerCase() === 'mainnet' || network?.toLowerCase() === 'ethereum') {
+                const answer = await vscode.window.showWarningMessage(
+                    '🚨 Safety Mode: Deployment to Mainnet restricted. Please confirm specific override.',
+                    { modal: true },
+                    'Cancel',
+                    'I understand the risks - Deploy anyway'
+                );
+                
+                if (answer !== 'I understand the risks - Deploy anyway') {
+                    vscode.window.showErrorMessage('Mainnet deployment cancelled for safety.');
+                    return false;
+                }
+            }
+            return true;
+        })
+    );
+
     // 4. Show deployment metadata in OutputChannel (per network)
     context.subscriptions.push(
         vscode.commands.registerCommand('web3-copilot-proto.showDeployment', async () => {
@@ -134,6 +155,10 @@ export function activate(context: vscode.ExtensionContext) {
             const metadataPath = path.join(deploymentsDir, `deployed-contracts.${network}.json`);
             const data = JSON.parse(fs.readFileSync(metadataPath, "utf8"));
             const latest = data[data.length - 1];
+
+            // Check network safety before showing info
+            const isSafe = await vscode.commands.executeCommand('web3-copilot-proto.checkNetworkSafety', latest.chainId, network);
+            if (!isSafe) return;
 
             const outputChannel = vscode.window.createOutputChannel(`Web3 Deployment Info - ${network}`);
             outputChannel.clear();
