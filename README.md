@@ -121,17 +121,6 @@ web3-copilot-extension/
 └── slither-output.json         # Static Analysis Findings
 ```
 
-## Citation
-
-```bibtex
-@inproceedings{dkhar2026web3copilot,
-  title={Augmenting Web3 Development in VS Code Through Prompt Driven Copilot Extensions and Slither-Based Security Analysis},
-  author={Dkhar, Josaiah Murfeal},
-  booktitle={Proceedings of ICAITSC 2026},
-  year={2026}
-}
-```
-
 ## License
 
 [MIT](LICENSE)
